@@ -1,6 +1,6 @@
-import { useNowPlaying } from '../hooks/useNowPlaying';
+import { useNowPlaying } from '../../hooks/useNowPlaying';
 import { FiExternalLink } from "react-icons/fi";
-import SpotifyLogo from '../assets/images/Spotify_Logo.png';
+import SpotifyLogo from '../../assets/images/Spotify_Logo.png';
 
 export default function NowPlaying() {
     const { nowPlaying, loading, error } = useNowPlaying(10000);
