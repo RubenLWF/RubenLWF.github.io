@@ -1,9 +1,6 @@
-const NOW_PLAYING_ENDPOINT = '/api/spotify/v1/me/player/currently-playing';
-const TOKEN_ENDPOINT = '/api/spotify/token';
-
-const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-const refresh_token = import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN;
+const VERCEL_API_BASE = 'https://spotify-api-proxy-beta.vercel.app/api';
+const NOW_PLAYING_ENDPOINT = `${VERCEL_API_BASE}/currently-playing`;
+const TOKEN_ENDPOINT = `${VERCEL_API_BASE}/token`;
 
 // Token cache
 let cachedToken: string | null = null;
@@ -24,42 +21,30 @@ export const getAccessToken = async (): Promise<string> => {
         return cachedToken;
     }
 
-    if (!client_id || !client_secret || !refresh_token) {
-        throw new Error('Missing Spotify credentials in environment variables');
+    try {
+        const response = await fetch(TOKEN_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch access token: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Cache the token with expiry time (subtract 5 minutes for safety buffer)
+        cachedToken = data.access_token;
+        const expiresInMs = (data.expires_in - 300) * 1000; // Convert to ms and subtract 5 minutes
+        tokenExpiryTime = Date.now() + expiresInMs;
+
+        return cachedToken!;
+    } catch (error) {
+        console.error('Error fetching access token:', error);
+        throw error;
     }
-
-    const basic = btoa(`${client_id}:${client_secret}`);
-
-    const response = await fetch(TOKEN_ENDPOINT, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Basic ${basic}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-            'grant_type': 'refresh_token',
-            'refresh_token': refresh_token
-        })
-    });
-
-    if (!response.ok) {
-        throw new Error(`Failed to fetch access token: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    // Cache the token with expiry time (subtract 5 minutes for safety buffer)
-    cachedToken = data.access_token;
-    const expiresInMs = (data.expires_in - 300) * 1000; // Convert to ms and subtract 5 minutes
-    tokenExpiryTime = Date.now() + expiresInMs;
-
-    return cachedToken!; // We know it's not null at this point
-};
-
-// Function to clear the token cache (useful for testing or when switching accounts)
-export const clearTokenCache = (): void => {
-    cachedToken = null;
-    tokenExpiryTime = 0;
 };
 
 export const getCurrentlyPlaying = async (): Promise<SpotifyTrack | null> => {
@@ -82,7 +67,6 @@ export const getCurrentlyPlaying = async (): Promise<SpotifyTrack | null> => {
 
         const song = await response.json();
 
-        // Handle case where no song is playing
         if (!song.item || !song.is_playing) {
             return null;
         }
