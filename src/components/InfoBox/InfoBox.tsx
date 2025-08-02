@@ -143,7 +143,7 @@ export default function InfoBox() {
                     <FaGithub className="w-7 h-7 text-secondary hover:text-[#0a66c2] transition-colors" />
                   </a>
                   <a
-                    href="mailto:ruben.lagerwerf@gmail.com"
+                    href="mailto:contact@rubenlagerwerf.nl"
                     target="_blank"
                     aria-label="Email"
                     className="flex-1 flex justify-center"
