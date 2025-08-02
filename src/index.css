@@ -3,14 +3,16 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-secondary: #2095f3;
-  --color-accent: #ff8d01;
+  --color-primary: #13341E;
+  --color-secondary: #4E7145;
+  --color-accent: #EB9C35;
 }
 
 html,
 body {
   font-family: var(--font-sans);
-  background: linear-gradient(135deg, #2095f3 0%, #1e293b 100%);
+  background: url('./assets/images/background.jpg') rgba(26, 63, 34, 0.75);
+  background-blend-mode: multiply;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;

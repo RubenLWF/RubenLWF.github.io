@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-import { CiLocationOn } from "react-icons/ci";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 import Ruben from "../../assets/images/Ruben.png";
 
@@ -46,7 +46,7 @@ export default function InfoBox() {
   }, [index, words.length]);
 
   return (
-    <div className="info-box bg-[#151f39] bg-opacity-25 shadow-lg rounded-4xl max-w-220 w-2/3 h-128">
+    <div className="info-box bg-primary bg-opacity-25 shadow-lg rounded-4xl max-w-220 w-2/3 h-128">
       <div className="w-full h-full flex flex-col text-white rounded-lg p-4">
         {/* Title */}
         <h1 className="text-5xl align-middle text-center">
@@ -58,14 +58,17 @@ export default function InfoBox() {
         </h1>
         <div className="flex flex-row items-end justify-center flex-1 w-full mt-2">
           {/* Image and SVG text */}
-          <div className="w-1/2 flex flex-col justify-end h-full m-2 relative">
-            <img
-              src={Ruben}
-              alt="Profile image"
-              className="w-full object-scale-down rounded-4xl"
-            />
-            <div className="absolute left-3 -bottom-3 w-2/3 flex justify-center pointer-events-none">
-              <RubenText />
+          <div className="w-1/2 flex flex-col m-2 justify-center h-full">
+            <div className="relative w-full flex justify-center items-center">
+              <img
+                src={Ruben}
+                alt="Profile image"
+                className="w-full object-scale-down rounded-4xl"
+                style={{ display: 'block' }}
+              />
+              <div className="absolute left-3 -bottom-3 w-2/3 flex justify-center pointer-events-none">
+                <RubenText />
+              </div>
             </div>
           </div>
           {/* Text */}
@@ -117,8 +120,8 @@ export default function InfoBox() {
                 </a>
               </p>
               {/* Location */}
-              <div className="flex items-center">
-                <CiLocationOn className="text-accent w-6 h-6 mr-2" />
+              <div className="flex items-center justify-center w-full">
+                <FaLocationDot className="text-accent w-6 h-6 mr-2" />
                 <h2 className="text-lg">Based in Eindhoven</h2>
               </div>
               {/* Links */}
@@ -131,7 +134,7 @@ export default function InfoBox() {
                     aria-label="LinkedIn"
                     className="flex-1 flex justify-center"
                   >
-                    <FaLinkedin className="w-7 h-7 text-secondary hover:text-[#0a66c2] transition-colors" />
+                    <FaLinkedin className="w-7 h-7 text-secondary hover:text-accent transition-colors" />
                   </a>
                   <a
                     href="https://github.com/RubenLWF"
@@ -140,7 +143,7 @@ export default function InfoBox() {
                     aria-label="GitHub"
                     className="flex-1 flex justify-center"
                   >
-                    <FaGithub className="w-7 h-7 text-secondary hover:text-[#0a66c2] transition-colors" />
+                    <FaGithub className="w-7 h-7 text-secondary hover:text-accent transition-colors" />
                   </a>
                   <a
                     href="mailto:contact@rubenlagerwerf.nl"
@@ -148,7 +151,7 @@ export default function InfoBox() {
                     aria-label="Email"
                     className="flex-1 flex justify-center"
                   >
-                    <FaEnvelope className="w-7 h-7 text-secondary hover:text-[#0a66c2] transition-colors" />
+                    <FaEnvelope className="w-7 h-7 text-secondary hover:text-accent transition-colors" />
                   </a>
                 </div>
               </div>
