@@ -7,7 +7,7 @@ import Ruben from "../../assets/images/Ruben.png";
 
 import Underline from "./Svg/Underline";
 import RubenText from "./Svg/RubenText";
-import NowPlaying from "../NowPlaying";
+import NowPlaying from "../NowPlaying/NowPlaying";
 
 const words = [
   "Developer",
@@ -111,7 +111,7 @@ export default function InfoBox() {
                 Currently pursuing a Bachelor's in Computer Science and
                 Engineering at{" "}
                 <a
-                  className="text-secondary"
+                  className="text-secondary hover:text-accent transition-colors"
                   href="https://www.tue.nl/en/"
                   target="_blank"
                   rel="noopener noreferrer"
