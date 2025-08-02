@@ -1,0 +1,23 @@
+#ruben-text-path {
+  stroke-dasharray: 5852.2919921875;
+  stroke-dashoffset: 5852.2919921875;
+  animation: draw-ruben-text 2500ms ease-in-out forwards 500ms;
+}
+
+@keyframes draw-ruben-text {
+  to {
+    stroke-dashoffset: 2918.26513671875;
+  }
+}
+
+#underline-path {
+  stroke-dasharray: 3540.6171875;
+  stroke-dashoffset: 3540.6171875;
+  animation: draw-underline 1s ease-in-out forwards 500ms;
+}
+
+@keyframes draw-underline {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

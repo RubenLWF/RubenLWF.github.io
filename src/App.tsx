@@ -1,10 +1,10 @@
-import './App.css'
+import InfoBox from './components/InfoBox/InfoBox';
 
 function App() {
   return (
-    <>
-      <h1>Test</h1>
-    </>
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <InfoBox />
+    </main>
   )
 }
 
