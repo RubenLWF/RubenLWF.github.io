@@ -67,7 +67,8 @@ export default function TechStack() {
   ];
 
   return (
-    <div className="tech-stack w-full flex flex-col items-center pt-20">
+    <div className="tech-stack w-full flex flex-col items-center pt-10">
+      <h2 className="text-3xl font-bold text-white mb-15">Technologies I use:</h2>
       <div className="flex flex-col gap-8 items-center">
         {rows.map((row, rowIdx) => (
           <div key={rowIdx} className={"flex flex-row gap-7.5 -mt-10"}>
