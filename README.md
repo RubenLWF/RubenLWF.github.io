@@ -5,7 +5,7 @@ My personal website built using React, you can visit it on [https://rubenlagerwe
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 19, TypeScript
-- **Styling**: Tailwind CSS, Sass
+- **Styling**: Tailwind CSS
 - **Build Tool**: Vite
 - **Deployment**: GitHub Pages
 - **API Proxy**: Vercel Serverless Functions
