@@ -1,4 +1,5 @@
-const VERCEL_API_BASE = 'https://spotify-api-proxy-beta.vercel.app/api';
+const VERCEL_API_BASE = import.meta.env.VITE_VERCEL_API_BASE;
+
 const NOW_PLAYING_ENDPOINT = `${VERCEL_API_BASE}/currently-playing`;
 const TOKEN_ENDPOINT = `${VERCEL_API_BASE}/token`;
 
