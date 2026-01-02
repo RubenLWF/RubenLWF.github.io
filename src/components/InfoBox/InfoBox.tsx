@@ -118,6 +118,15 @@ export default function InfoBox() {
                 >
                   Eindhoven University of Technology
                 </a>
+                {" "}and working as a developer at{" "}
+                <a
+                  className="text-secondary hover:text-accent transition-colors"
+                  href="https://drieam.com/en/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Drieam
+                </a>.
               </p>
               {/* Location */}
               <div className="flex items-center justify-center w-full">
